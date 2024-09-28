@@ -5,11 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Materilize css</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/materailize/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <!-- start navbar section -->
+    <nav class="blue ">
+        <div class="nav-wrapper">
+            <a href="#!" class="">home</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- finish navbar section -->
 
+    <!-- satrt navbar responsive mobile -->
+    <ul class="sidenav sidenav-trigger" id="mobile-demo">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="./assets/images/office-with-thematic-wallpaper-modern-office-background-building-background-interior_1020697-689839.avif"
+                        alt="" class="w-100">
+                </div>
+                <a href="#user"><img class="circle"
+                        src="./assets/images/3d-illustration-person-with-sunglasses_23-2149436188.avif" alt=""></a>
+                <a href="#name"><span class="white-text name">root404</span></a>
+                <a href="#email"><span class="white-text email">mohammadrg360@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="https://front-code.ir"><i class="material-icons">insert_link</i>Blog</a></li>
+        <li><a href="#!"><i class="material-icons">insert_link</i>telegram</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">manu</a></li>
+        <li><a class="waves-effect" href="#!">home</a></li>
+        <li><a class="waves-effect" href="#!">blog</a></li>
+        <li><a class="waves-effect" href="#!">shop</a></li>
+    </ul>
+    <!-- finish navbar responsive mobile -->
+
+    <!-- home section  -->
+    <section class="flex_full_center flex_col">
+        <img src="./assets/images/office-with-thematic-wallpaper-modern-office-background-building-background-interior_1020697-689839.avif"
+            alt="" class="size_full">
+        <a class="waves-effect waves-green btn w-100 max-w-250 mt_10 rounded_pill">programming tutorial</a>
+        <a class="waves-effect waves-green btn w-100 max-w-250 mt_10 rounded_pill">Tasks</a>
+    </section>
+    <!-- finish home section -->
+    <script src="./assets/materailize/js/materialize.min.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 
