@@ -47,11 +47,182 @@
 .mb_10 {
     margin-bottom: 10px;
 }
-.rounded_10
-{
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.rounded_10 {
     border-radius: 10px;
 }
-.rounded_pill
-{
+
+.rounded_pill {
     border-radius: 100px;
+}
+
+.margin_auto {
+    margin: 0 auto;
+}
+
+.text-align-center {
+    text-align: center !important;
+}
+
+.position_relative {
+    position: relative;
+}
+
+.top-7px {
+    top: 7px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.paddind-all_10 {
+    padding: 10px !important;
+}
+
+.paddind-all_30 {
+    padding: 30px;
+}
+
+.text-blue {
+    color: blue !important;
+}
+
+.text-red {
+    color: red !important;
+}
+
+.text-orange {
+    color: orange !important;
+}
+
+.text-pink {
+    color: pink !important;
+}
+
+.text-cyan {
+    color: cyan !important;
+}
+
+.text-purple {
+    color: purple !important;
+}
+
+.text-magenta {
+    color: magenta !important;
+}
+
+.text-black {
+    color: black !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.text-brown {
+    color: brown !important;
+}
+
+.text-green {
+    color: green !important;
+}
+
+.text-yellow {
+    color: yellow !important;
+}
+
+.text-yellowgreen {
+    color: yellowgreen !important;
+}
+
+.text-chocolate {
+    color: chocolate !important;
+}
+
+.text-crismon {
+    color: crimson !important;
+}
+
+.text-tomato {
+    color: tomato !important;
+}
+
+.text-teal {
+    color: teal !important;
+}
+
+.text-slateblue {
+    color: slateblue !important;
+}
+
+.text-skyblue {
+    color: skyblue !important;
+}
+
+.text-seagreen {
+    color: seagreen !important;
+}
+
+.text-cornflowerblue {
+    color: cornflowerblue !important;
+}
+
+.text-dark-blue {
+    color: darkblue !important;
+}
+
+.text-dark-cyan {
+    color: darkcyan !important;
+}
+
+.text-dark-green {
+    color: darkgreen !important;
+}
+
+.text-dark-orange {
+    color: darkorange !important;
+}
+
+.text-dark-red {
+    color: darkred !important;
+}
+
+.text-dark-gray {
+    color: darkgray !important;
+}
+
+.text-dark-seagreen {
+    color: darkseagreen !important;
+}
+
+.text-dark-violet {
+    color: darkviolet !important;
+}
+
+.text-dark-salmon {
+    color: darksalmon !important;
+}
+
+@media(min-width:600px) {
+    #top-action-section {
+        display: flex;
+        align-items: center;
+    }
 }
