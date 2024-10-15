@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
+<body x-data="userData">
     <!-- start navbar section -->
-    <nav class="blue ">
+    <nav class="blue right">
         <div class="nav-wrapper">
             <a href="#!" class="hide-on-med-and-up">user management</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -54,10 +54,10 @@
     <!-- finish navbar responsive mobile -->
 
     <!-- content section  -->
-    <section id="top-action-section" class="row">
+    <section id="top-action-section" class="row container">
         <div class="mt_10 col s12 m4 l3">
             <button
-                class="d-flex align_items_center justify_c_center waves-effect waves-light blue darken-2 btn rounded_pill w-100 ">
+                class="add-user-btn d-flex align_items_center justify_c_center waves-effect waves-light blue darken-2 btn rounded_pill w-100 ">
                 <i class="material-icons">add</i>
                 add user
             </button>
@@ -73,8 +73,8 @@
     </section>
     <!-- finish content section -->
 
-    <section class="user-list-section">
-        <ul class="collapsible">
+    <section class="user-list-section" x-init="getUsers()">
+        <ul class="collapsible hide-on-med-and-up">
             <li class="user-list-item">
                 <div class="collapsible-header">
                     <i
@@ -102,7 +102,95 @@
                 </div>
             </li>
         </ul>
+
+
+        <div class="container hide-on-med-and-down show-on-medium-and-up">
+            <table class="test striped centered highlight">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>username</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="user in users">
+                        <tr>
+                            <td x-text="user.id"></td>
+                            <td x-text="user.name"></td>
+                            <td x-text="user.username">root404</td>
+                            <td x-text="user.email"></td>
+                            <td x-text="user.address.street + ' '   + user.address.suite"></td>
+                            <td>
+                                <i class="material-icons text-red mr-5 ml-5">delete_forever</i>
+                                <i class="material-icons text-orange">edite</i>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div
+            class="pagination-container z-depth-4 container paddind-all_10 align_items_center rounded_10 mt_10 paddind-left_10 mb_10 d-flex justify_c_between position_fixed bottom-0 left-0 right-0">
+            <div class="pagination-item-count d-flex">
+                showing
+                <span class="ml-5 mr-5 max-w-50">
+                    <input type="number" value="10" class="text-blue text-align-center darken-2 border-none">
+                </span>
+                of
+                <span class="text-blue ml-5">100</span>
+            </div>
+            <div class="pagination-buttons d-flex gap-10">
+                <i
+                    class="material-icons blue text-white paddind-all_5 rounded_pill cursor_pointer">keyboard_arrow_left</i>
+                <i
+                    class="material-icons blue text-white paddind-all_5 rounded_pill cursor_pointer">keyboard_arrow_right</i>
+            </div>
+        </div>
     </section>
+
+    <div class="add-user-modal-back d-none"></div>
+    <div class="add-user-modal container center-on-small-only">
+        <div class="row ml-20">
+            <h5>
+                <i class="material-icons">person_add</i>
+                Add User
+            </h5>
+
+            <form>
+                <div class="input-field col s12">
+                    <input type="text" id="name" class="validate">
+                    <label for="name">name:</label>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" id="username" class="validate">
+                    <label for="username">username:</label>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" id="email" class="validate">
+                    <label for="email">email:</label>
+                </div>
+
+                <button type="button"
+                    class="waves-effect waves-light btn blue darken-1 mt_10 mb_10 rounded_pill w-100 max-w-250">
+                    submit
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="./assets/js/axios.js"></script>
+    <script defer src="./assets/js/alpine.js"></script>
+    <script src="./assets/js/alpineJs/usersController.js"></script>
     <script src="./assets/materailize/js/materialize.min.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/user.js"></script>
