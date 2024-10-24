@@ -16,6 +16,10 @@
     justify-content: center;
 }
 
+.justify_c_between {
+    justify-content: space-between;
+}
+
 .flex_full_center {
     display: flex;
     justify-content: center;
@@ -30,6 +34,35 @@
 .flex_col {
     display: flex;
     flex-direction: column;
+}
+
+.gap-10 {
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.border-none {
+    border: 0 !important;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.max-w-50 {
+    max-width: 50% !important;
 }
 
 .max-w-200 {
@@ -54,6 +87,22 @@
 
 .ml-5 {
     margin-left: 5px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.ml-25 {
+    margin-left: 25px;
 }
 
 .mt-5 {
@@ -84,8 +133,36 @@
     position: relative;
 }
 
+.position_fixed {
+    position: fixed;
+}
+
+.left-0 {
+    left: 0;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.inset {
+    inset: 0;
+}
+
 .top-7px {
     top: 7px;
+}
+
+.-top-10px {
+    top: -10px !important;
 }
 
 .font-bold {
@@ -94,6 +171,14 @@
 
 .paddind-all_10 {
     padding: 10px !important;
+}
+
+.paddind-all_5 {
+    padding: 5px;
+}
+
+.paddind-left_10 {
+    padding-left: 10px !important;
 }
 
 .paddind-all_30 {
@@ -218,6 +303,10 @@
 
 .text-dark-salmon {
     color: darksalmon !important;
+}
+
+.cursor_pointer {
+    cursor: pointer;
 }
 
 @media(min-width:600px) {

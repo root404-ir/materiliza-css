@@ -57,14 +57,15 @@
     <section id="top-action-section" class="row container">
         <div class="mt_10 col s12 m4 l3">
             <button
-                class="add-user-btn d-flex align_items_center justify_c_center waves-effect waves-light blue darken-2 btn rounded_pill w-100 ">
+                class="add-user-btn d-flex align_items_center justify_c_center waves-effect waves-light blue darken-2 btn rounded_pill w-100 "
+                x-on:click="showAddModal = true">
                 <i class="material-icons">add</i>
                 add user
             </button>
         </div>
         <div class="row mt_10 col s12 m8 l9">
-            <div class="input-field col s12">
-                <input id="search" type="text" class="validate">
+            <div class="input-field col s12" x-init="$watch('searchChar',(value)=>handleSearch(value))">
+                <input id="search" type="text" class="validate" x-model="searchChar">
                 <label for="search">
                     <i class="material-icons position_relative top-7px">search</i>
                     search</label>
@@ -73,37 +74,55 @@
     </section>
     <!-- finish content section -->
 
+
+    <div x-show="isLoading" class="center-align">
+        <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <section class="user-list-section" x-init="getUsers()">
         <ul class="collapsible hide-on-med-and-up">
-            <li class="user-list-item">
-                <div class="collapsible-header">
-                    <i
-                        class="material-icons text-dark-blue text-darken-2 user-list-item-arrow-icon">arrow_drop_down_circle</i>
-                    mohammad
-                </div>
-                <div class="collapsible-body">
-                    <div class="paddind-all_10">
-                        <span class="font-bold">UserName:</span>
-                        <span>Mohammad</span>
+            <template x-for="user in pageUsers">
+                <li class="user-list-item">
+                    <div class="collapsible-header">
+                        <i
+                            class="material-icons text-dark-blue text-darken-2 user-list-item-arrow-icon">arrow_drop_down_circle</i>
+                        <span x-text="user.name"></span>
                     </div>
-                    <div class="paddind-all_10">
-                        <span class="font-bold">Email:</span>
-                        <span>me@mohammad.fun</span>
+                    <div class="collapsible-body">
+                        <div class="paddind-all_10">
+                            <span class="font-bold">UserName:</span>
+                            <span x-text="user.username"></span>
+                        </div>
+                        <div class="paddind-all_10">
+                            <span class="font-bold">Email:</span>
+                            <span x-text="user.email"></span>
+                        </div>
+                        <div class="paddind-all_10">
+                            <span class="font-bold">Address:</span>
+                            <span x-text="user.address.street"></span>
+                        </div>
+                        <div class="paddind-all_10 d-flex">
+                            <span class="font-bold">Action:</span>
+                            <i class="material-icons text-red mr-5 ml-5">delete_forever</i>
+                            <i class="material-icons text-orange">edite</i>
+                        </div>
                     </div>
-                    <div class="paddind-all_10">
-                        <span class="font-bold">Address:</span>
-                        <span>NY , 23 st , jacob build</span>
-                    </div>
-                    <div class="paddind-all_10 d-flex">
-                        <span class="font-bold">Action:</span>
-                        <i class="material-icons text-red mr-5 ml-5">delete_forever</i>
-                        <i class="material-icons text-orange">edite</i>
-                    </div>
-                </div>
-            </li>
+                </li>
+            </template>
         </ul>
-
-
         <div class="container hide-on-med-and-down show-on-medium-and-up">
             <table class="test striped centered highlight">
                 <thead>
@@ -117,13 +136,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <template x-for="user in users">
+                    <template x-for="user in pageUsers">
                         <tr>
                             <td x-text="user.id"></td>
                             <td x-text="user.name"></td>
                             <td x-text="user.username">root404</td>
                             <td x-text="user.email"></td>
-                            <td x-text="user.address.street + ' '   + user.address.suite"></td>
+                            <td x-text="user.address.street + ' ' + user.address.suite"></td>
                             <td>
                                 <i class="material-icons text-red mr-5 ml-5">delete_forever</i>
                                 <i class="material-icons text-orange">edite</i>
@@ -134,30 +153,33 @@
             </table>
         </div>
 
-
-
-
         <div
             class="pagination-container z-depth-4 container paddind-all_10 align_items_center rounded_10 mt_10 paddind-left_10 mb_10 d-flex justify_c_between position_fixed bottom-0 left-0 right-0">
             <div class="pagination-item-count d-flex">
                 showing
-                <span class="ml-5 mr-5 max-w-50">
-                    <input type="number" value="10" class="text-blue text-align-center darken-2 border-none">
+                <span class="ml-5 mr-5 max-w-50 position_relative -top-10px"
+                    x-init="$watch('itemsCount',(value)=>handleChangeItemsCount(value))">
+                    <input type="number" value="10" class="text-blue text-align-center darken-2"
+                        x-on:change="pagination()" x-model="itemsCount">
                 </span>
                 of
-                <span class="text-blue ml-5">100</span>
+                <span class="text-blue ml-5" x-text="users.length"></span>
             </div>
+
+            <span x-text="currentPage" class="currentPage"></span>
+
             <div class="pagination-buttons d-flex gap-10">
-                <i
-                    class="material-icons blue text-white paddind-all_5 rounded_pill cursor_pointer">keyboard_arrow_left</i>
-                <i
-                    class="material-icons blue text-white paddind-all_5 rounded_pill cursor_pointer">keyboard_arrow_right</i>
+                <i class="material-icons blue text-white paddind-all_5 rounded_pill cursor_pointer"
+                    x-on:click="prevPage">keyboard_arrow_left</i>
+                <i class="material-icons blue text-white paddind-all_5 rounded_pill cursor_pointer"
+                    x-on:click="nextPage">keyboard_arrow_right</i>
             </div>
         </div>
     </section>
 
-    <div class="add-user-modal-back d-none"></div>
-    <div class="add-user-modal container center-on-small-only">
+    <div class="add-user-modal-back" x-transition x-show="showAddModal" x-on:click="showAddModal = false">
+    </div>
+    <div class="add-user-modal container center-on-small-only" x-bind:class="showAddModal && 'show'">
         <div class="row ml-20">
             <h5>
                 <i class="material-icons">person_add</i>
