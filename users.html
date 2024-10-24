@@ -188,20 +188,20 @@
 
             <form>
                 <div class="input-field col s12">
-                    <input type="text" id="name" class="validate">
+                    <input type="text" id="name" class="validate" x-model="newUserInfo.name">
                     <label for="name">name:</label>
                 </div>
                 <div class="input-field col s12">
-                    <input type="text" id="username" class="validate">
+                    <input type="text" id="username" class="validate" x-model="newUserInfo.username">
                     <label for="username">username:</label>
                 </div>
                 <div class="input-field col s12">
-                    <input type="text" id="email" class="validate">
+                    <input type="text" id="email" class="validate" x-model="newUserInfo.email">
                     <label for="email">email:</label>
                 </div>
 
                 <button type="button"
-                    class="waves-effect waves-light btn blue darken-1 mt_10 mb_10 rounded_pill w-100 max-w-250">
+                    class="waves-effect waves-light btn blue darken-1 mt_10 mb_10 rounded_pill w-100 max-w-250" x-on:click="handleSubmitAddUser()">
                     submit
                 </button>
             </form>

@@ -9,6 +9,11 @@ document.addEventListener('alpine:init', () => {
         itemsCount: 4,
         currentPage: 1,
         searchChar: '',
+        newUserInfo: {
+            name: "",
+            userName: "",
+            email: "",
+        },
         getUsers() {
             this.isLoading = true
             axios.get('./api/users.json').then((res) => {
@@ -46,6 +51,18 @@ document.addEventListener('alpine:init', () => {
                 this.currentPage = 1
                 this.pagination()
             }, 100)
+        },
+        handleSubmitAddUser() {
+            this.isLoading = true
+            axios.post('https://jsonplaceholder.typicode.com/users', this.newUserInfo).then((res) => {
+                if (res.status === 201) {
+                    this.mainUsers.push(this.newUserInfo)
+                    this.showAddModal = false
+                    this.pagination()
+                }
+            }).finally(() => {
+                this.isLoading = false
+            })
         }
     }))
 })
