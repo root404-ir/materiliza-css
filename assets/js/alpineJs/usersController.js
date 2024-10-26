@@ -16,7 +16,7 @@ document.addEventListener('alpine:init', () => {
         },
         getUsers() {
             this.isLoading = true
-            axios.get('./api/users.json').then((res) => {
+            axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
                 this.mainUsers = res.data
                 this.users = res.data
                 this.pagination()
@@ -58,11 +58,40 @@ document.addEventListener('alpine:init', () => {
                 if (res.status === 201) {
                     this.mainUsers.push(this.newUserInfo)
                     this.showAddModal = false
+                    this.handleResetForm()
                     this.pagination()
+                    M.toast({ html: 'عملیات با موفقیت انجام شد', classes: 'rounded green' });
                 }
             }).finally(() => {
                 this.isLoading = false
             })
+        },
+        handleResetForm() {
+            this.newUserInfo = {
+                name: '',
+                userName: '',
+                email: ''
+            }
+        },
+        handleDeleteItem(userId) {
+            var toastHTML = '<span>are you sure delete item (' + userId + ') ?</span><button class="btn-flat toast-action" x-on:click="handleConfirmDelete(' + userId + ')">Delete</button>';
+            M.toast({ html: toastHTML });
+        },
+        handleConfirmDelete(userId) {
+            this.isLoading = true
+            axios.delete("https://jsonplaceholder.typicode.com/users/" + userId).then((res) => {
+                if (res.status === 200) {
+                    this.mainUsers = this.mainUsers.filter(user => user.id !== userId)
+                    this.users = this.users.filter(user => user.id !== userId)
+                    this.pagination()
+                    M.toast({ html: 'عملیات با موفقیت انجام شد', classes: ' green' });
+                }
+            }).finally(() => {
+                this.isLoading = false
+            })
+        },
+        handleUpdateUser(user) {
+
         }
     }))
 })
